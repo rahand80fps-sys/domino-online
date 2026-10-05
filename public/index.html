@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Domino Online</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <header class="topbar">
+        <div>
+            <h1>🀄 Domino Online</h1>
+            <p>Play with a friend</p>
+        </div>
+
+        <div class="room-info">
+            Room:
+            <strong id="roomCode">---</strong>
+        </div>
+    </header>
+
+
+    <!-- LOBBY -->
+
+    <section id="lobby" class="panel">
+
+        <h2>Play Domino</h2>
+
+        <input
+            id="playerName"
+            type="text"
+            placeholder="Your name"
+            maxlength="20"
+        >
+
+        <button id="createBtn">
+            Create Room
+        </button>
+
+        <div class="separator">
+            OR
+        </div>
+
+        <input
+            id="joinCode"
+            type="text"
+            placeholder="Room code"
+            maxlength="5"
+        >
+
+        <button id="joinBtn">
+            Join Room
+        </button>
+
+        <p id="lobbyMessage" class="message"></p>
+
+    </section>
+
+
+    <!-- GAME -->
+
+    <section id="game" class="game hidden">
+
+        <div class="players">
+
+            <div id="player1" class="player-card">
+                <span>Player 1</span>
+                <b id="player1Count">0 tiles</b>
+            </div>
+
+            <div id="player2" class="player-card">
+                <span>Player 2</span>
+                <b id="player2Count">0 tiles</b>
+            </div>
+
+        </div>
+
+
+        <div id="turnMessage" class="turn-message">
+            Waiting for player...
+        </div>
+
+
+        <!-- BOARD -->
+
+        <div class="board-container">
+
+            <button
+                id="leftButton"
+                class="side-button"
+            >
+                ←
+            </button>
+
+            <div id="board" class="board">
+            </div>
+
+            <button
+                id="rightButton"
+                class="side-button"
+            >
+                →
+            </button>
+
+        </div>
+
+
+        <!-- YOUR HAND -->
+
+        <div class="hand-area">
+
+            <h3>Your Tiles</h3>
+
+            <div id="hand" class="hand">
+            </div>
+
+            <p id="handHelp">
+                Select a tile, then choose ← or →
+            </p>
+
+        </div>
+
+
+        <div class="controls">
+
+            <button id="rematchBtn" class="secondary">
+                🔄 Rematch
+            </button>
+
+            <button id="leaveBtn" class="danger">
+                Leave Room
+            </button>
+
+        </div>
+
+        <p id="gameMessage" class="message"></p>
+
+    </section>
+
+</div>
+
+
+<!-- Game over popup -->
+
+<div id="gameOver" class="modal hidden">
+
+    <div class="modal-box">
+
+        <h2 id="winnerText">
+            Game Over
+        </h2>
+
+        <button id="modalRematch">
+            Play Again
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
